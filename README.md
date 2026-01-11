@@ -1,5 +1,5 @@
 # THUẬT TOÁN PHÂN CỤM DENSITY PEAKS (DPC) GỐC
-<!-- import numpy as np
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 
@@ -106,10 +106,10 @@ if __name__ == "__main__":
     plt.xlabel("") # Để trống nhãn trục giống hình
     plt.ylabel("")
     plt.grid(True, linestyle='-', alpha=0.3)
-    plt.show() -->
+    plt.show()
 
 # THUẬT TOÁN PHÂN CỤM GAP - BASED - DPC (CẢI TIẾN TỪ DPC GỐC)
-<!-- import numpy as np
+import numpy as np
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 
@@ -206,4 +206,4 @@ if __name__ == "__main__":
     plt.title(f"Kết quả GB-DPC")
     plt.legend()
     plt.grid(True, alpha=0.3)
-    plt.show() -->
+    plt.show()
