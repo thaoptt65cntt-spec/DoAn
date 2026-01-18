@@ -28,9 +28,10 @@ def chay_thuat_toan_gap_dpc(X):
     all_dists = D[np.triu_indices(n, k=1)]
     dc = np.percentile(all_dists, 30)
     
+ # Tính mật độ cut-off
     rho = np.zeros(n)
     for i in range(n):
-        rho[i] = np.sum(np.exp(-(D[i, :] / dc) ** 2)) - 1
+        rho[i] = np.sum(D[i, :] < dc) - 1
         
     delta = np.zeros(n)
     rho_sort = np.argsort(rho)[::-1]

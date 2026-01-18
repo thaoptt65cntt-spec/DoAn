@@ -30,11 +30,16 @@ def chay_thuat_toan_dpc_goc(X, k_clusters=2):
     distances_flat = D[np.triu_indices(n, k=1)]
     dc = np.percentile(distances_flat, 30)
     
-    # BƯỚC 3: Tính mật độ cục bộ (Rho) bằng Gaussian Kernel
-    # Điểm càng đông người xung quanh thì Rho càng cao
+     # Tính mật độ cut-off
     rho = np.zeros(n)
     for i in range(n):
-        rho[i] = np.sum(np.exp(-(D[i, :] / dc) ** 2)) - 1
+        rho[i] = np.sum(D[i, :] < dc) - 1  # trừ chính nó
+
+    # BƯỚC 3: Tính mật độ cục bộ (Rho) theo phương pháp cut-off
+    #Rho_i là số điểm nằm trong bán kính dc quanh điểm i
+    rho = np.zeros(n)
+    for i in range(n):
+        rho[i] = np.sum(D[i, :] < dc) - 1  # trừ chính nó
         
     # BƯỚC 4: Tính khoảng cách tách biệt (Delta)
     # Delta là khoảng cách từ điểm i đến điểm gần nhất có mật độ cao hơn nó
